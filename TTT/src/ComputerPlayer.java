@@ -12,19 +12,20 @@ public class ComputerPlayer {
 	}
 	
 	public void play(){
-		int x = rand.nextInt(3);
-		int y = rand.nextInt(3);
 		
 		boolean tf = true;
 		
 		while(tf){
 			try {
 				tf = false;
+				
+				int x = rand.nextInt(3);
+				int y = rand.nextInt(3);
+				
 				board.play(xo, x, y);
-				break;
 			} catch (OccupiedSpaceException e) {
 				tf = true;
-				e.printStackTrace();
+				// e.printStackTrace(); // print the error
 			}
 		}
 		
