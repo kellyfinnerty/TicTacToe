@@ -3,6 +3,7 @@ public class Board {
 	
 	private char [][] board;
 	private int size = 3;
+	private char winner = ' ';
 	
 	public Board(){
 		this.board = new char[size][size];
@@ -33,22 +34,30 @@ public class Board {
 		//across
 		for(int i = 0; i < size; i++){
 			if(board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] == board[i][2] && board[i][0] != ' '){
+				this.winner = board[i][0];
 				return true;
 			}
 			if(board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] == board[2][i] && board[0][i] != ' '){
+				this.winner = board[0][i];
 				return true;
 			}
 		}
 		
 		if(board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] == board[2][2] && board[0][0] != ' '){
+			this.winner = board[0][0];
 			return true;
 		}
 		
 		if(board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] == board[2][0] && board[2][0] != ' '){
+			this.winner = board[0][2];
 			return true;
 		}
 		
 		return false;
+	}
+	
+	public char winner(){
+		return winner;
 	}
 	
 	public boolean full(){
